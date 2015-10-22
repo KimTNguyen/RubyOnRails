@@ -1,0 +1,17 @@
+<h1>Searching for <%= @search_term %></h1>
+<table border = "1">
+	<tr>
+		<th> Image </th>
+		<th> Title </th>
+		<th> Ranking </th>
+	</tr>
+	<% @recipes.each do |recipe| %>
+		<% tmp = raw strip_tags(recipe["title"]) %>
+		<tr>
+			<td><%= link_to image_tag(recipe["image_url"], width: 100, height: 100),"#{recipe['source_url']}"%></td>
+			<td><%= link_to "#{tmp}", "#{recipe['source_url']}" %></td>
+			<td><%= recipe["social_rank"] %></td>
+		</tr>
+	<% end %>
+</table>
+<p>Find me in app/views/recipes/index.html.erb</p>
